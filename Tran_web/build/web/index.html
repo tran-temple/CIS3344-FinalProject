@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+Name: Hong Tran
+HW01 and HW02 - Home Page and Routing
+-->
+<html>
+    <head>
+        <title>Visit Philadelphia</title>
+
+        <!-- Link to an External Style Sheet -->
+        <link href="style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />         
+        <link href="style/_dropdownStyle.css" rel="stylesheet" type="text/css" />  
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Philadelphia
+            </div>
+
+            <div id="nav">
+                <div class="dropdown">
+                    <a href="#/home"><img title="Home" src="icons/home_icon_H24.png" alt="Home"></a>
+                </div>
+                <div class="dropdown">
+                    <img class="dropHeader" title="Blogs" onclick="myDropdown.toggle(this)" src="icons/blog_icon_H24.png" alt="Account">
+                    <div class="dropContent" id="blogDropDown">
+                        <a href="#/blog">Blog Page</a><br/>
+                        <a target="_blank" href="03_JS_Intro/index.html">JS Intro</a><br/>
+                        <a target="_blank" href="04_JS_Adv/index.html">JS Advanced</a><br/>
+                        <a target="_blank" href="05_JS_Fw/index.html">JS Framework</a><br/>
+                        <a target="_blank" href="tutorial/poc.html">Tutorial Proposal</a><br/>
+                        <a target="_blank" href="07_DB/index.html">Database</a><br/>
+                        <a target="_blank" href="08_webAPIs/webAPIs/listUsersAPI.jsp">web_user API</a><br/>
+                        <a target="_blank" href="08_webAPIs/listUsers.html">web_user HTML page</a><br/>
+                        <a target="_blank" href="08_webAPIs/webAPIs/listOtherAPI.jsp">other API</a><br/>
+                        <a target="_blank" href="08_webAPIs/listOther.html">other HTML page</a><br/>
+                        <a target="_blank" href="tutorial/index.html">Tutorial Final</a><br/>
+                        <a target="_blank" href="09_React_Intro/listUsers.html">React: Users</a><br/>
+                        <a target="_blank" href="09_React_Intro/listOther.html">React: Museums</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <img class="dropHeader" title="City" onclick="myDropdown.toggle(this)" src="icons/city_icon_H24.png" alt="City">
+                    <div class="dropContent" id="citylifeDropDown">
+                        <a>Shopping</a><br/>
+                        <a>Foods</a><br/>
+                        <a>Museums</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a><img title="About" src="icons/about_icon_H24.png" alt="About"></a>
+                </div>               
+            </div> <!-- end of  nav -->
+
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+
+        </div> <!-- end of  content -->
+
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <!-- script for drop down menu-->
+        <script src="js/dropdownFw.js"></script>
+        <!-- script for routing-->
+        <script src="js/routeFw.js"></script>
+        <script src="js/components/home.js"></script>
+        <script src="js/components/blog.js"></script>
+
+        <script>
+                "use strict";
+                var myRoutes = [];
+
+                myRoutes['#/'] = home;  // on page reload, function home will run
+                myRoutes['#/home'] = home; // function home                       
+                myRoutes['#/blog'] = blog; // function blog
+
+                // routeFw returns a routing object that has private and public 
+                // data members and methods. 
+                // As input parameter, it takes an object with properties you can set 
+                // or just accept whatever defaults are set by the framework.
+                var myRoutes = routeFw({
+                    routeArray: myRoutes,
+                    contentId: "content"
+                });
+
+                // print the routes (check console.log)
+                myRoutes.printRoutes();
+
+                var myDropdown = dropDownFw({
+                    dropContentStyle: "dropContent",
+                    hiddenRight: "-500px"
+                });
+        </script>
+    </body>
+</html>

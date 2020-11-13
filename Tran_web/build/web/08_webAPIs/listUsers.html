@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Web Users</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                The list of web users
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <h3 style="text-align:center">Click Column Headings To Sort</h3>
+
+            <div id="listUser"></div>
+            <br/>
+        </div>        
+        
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <script src="js/ajax.js"></script>
+        <script src="js/MakeTable.js"></script>
+        <script>
+            "use strict";
+
+            function my$(element) {
+                return document.getElementById(element);
+            }
+
+            ajax("webAPIs/listUsersAPI.jsp", success, "listHere");
+
+            function success(httpRequest) {
+                var obj = JSON.parse(httpRequest.responseText);
+                if (obj.dbError.length > 0) {
+                    // the API call might have been successful, but maybe there was a DB error 
+                    // (like forgot to tunnel in, or SQL syntax error, etc).
+                    my$("listUser").innerHTML = "Error: " + dbError;
+                } else {
+                    // combine, rename, and reorder the fields from obj.webUserList into a new list of objects, 
+                    // as you wish.
+                    var list = [];
+                    for (var i = 0; i < obj.webUserList.length; i++) {
+                        list[i] = {}; // create empty object 
+                        list[i].User_Email = obj.webUserList[i].userEmail;
+                        list[i].Image = "<img src='" + obj.webUserList[i].image + "'/>";
+                        list[i].Birthday = obj.webUserList[i].birthday;
+                        list[i].Membership_Fee = obj.webUserList[i].membershipFee;
+                        //list[i].Error = obj.webUserList[i].errorMsg; // leave this in until you are sure no errors
+                    }
+
+                    // turn the list into an HTML table 
+                    MakeTable("listUser", list, "User_Email");
+                }
+            }
+
+        </script>
+    </body>
+</html>

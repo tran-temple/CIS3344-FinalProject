@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Museums</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/reactMuseumTable.css" rel="stylesheet" type="text/css" /> 
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js'></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js'></script>
+
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+
+    </head>
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                The list of Museums
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <h3 style="text-align:center">Museum List</h3>
+
+            <div id="listMuseum"></div>
+            <br/>
+        </div>
+        
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <script src="js/ajax_alt.js"></script>
+
+        <script type="text/babel" src="js/React/MuseumTable.js"></script>
+        
+        <script type="text/babel">
+            "use strict";
+
+            function my$(element) {
+                return document.getElementById(element);
+            }
+
+
+            ajax_alt("webAPIs/listOtherAPI.jsp", success, "listMuseum");
+
+            function success(obj) {
+                console.log(obj);
+                if (obj.dbError.length > 0) {
+                    // the API call might have been successful, but maybe there was a DB error 
+                    // (like forgot to tunnel in, or SQL syntax error, etc).
+                    my$("listMuseum").innerHTML = "Error: " + obj.dbError;
+                } else {
+                    // combine, rename, and reorder the fields from obj.museumList into a new list of objects,                     
+                    var myList = [];
+                    for (var i = 0; i < obj.museumList.length; i++) {                        
+                        myList[i] = {}; // create empty object 
+                        myList[i].museumName = obj.museumList[i].museumName;
+                        myList[i].museumAddress = obj.museumList[i].museumAddress;                        
+                        myList[i].image = obj.museumList[i].image;
+                        myList[i].museumWebsite = obj.museumList[i].museumWebsite;                        
+                        myList[i].museumYear = obj.museumList[i].museumYear;
+                        myList[i].ticketPrice = obj.museumList[i].ticketPrice;
+                        //myList[i].errorMsg = obj.museumList[i].errorMsg; // leave this in until we are sure no errors
+                    }
+
+                    // turn the list into an HTML table 
+                    ReactDOM.render(
+                            <MuseumTable list={myList}/>,
+                            document.getElementById("listMuseum")
+                            );
+                }
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Museums</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" /> 
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                The list of Museums
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <h3 style="text-align:center">Click Column Headings To Sort</h3>
+
+            <div id="listMuseum"></div>
+            <br/>
+        </div>
+        
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <script src="js/ajax.js"></script>
+        <script src="js/MakeTable.js"></script>
+        <script>
+            "use strict";
+
+            function my$(element) {
+                return document.getElementById(element);
+            }
+
+            ajax("webAPIs/listOtherAPI.jsp", success, "listHere");
+
+            function success(httpRequest) {
+                var obj = JSON.parse(httpRequest.responseText);
+                if (obj.dbError.length > 0) {
+                    // the API call might have been successful, but maybe there was a DB error 
+                    // (like forgot to tunnel in, or SQL syntax error, etc).
+                    my$("listMuseum").innerHTML = "Error: " + dbError;
+                } else {
+                    // combine, rename, and reorder the fields from obj.museumList into a new list of objects, 
+                    // as you wish.
+                    var list = [];
+                    for (var i = 0; i < obj.museumList.length; i++) {
+                        list[i] = {}; // create empty object 
+                        list[i].Museum_Name = obj.museumList[i].museumName;
+                        list[i].Address = obj.museumList[i].museumAddress;                        
+                        list[i].Image = "<img src='" + obj.museumList[i].image + "'/>";
+                        list[i].Website = obj.museumList[i].museumWebsite;                        
+                        list[i].Museum_Year = obj.museumList[i].museumYear;
+                        list[i].Ticket_Price = obj.museumList[i].ticketPrice;
+                        //list[i].Error = obj.museumList[i].errorMsg; // leave this in until you are sure no errors
+                    }
+                    
+                    // turn the list into an HTML table 
+                    MakeTable("listMuseum", list, "Museum_Name");
+                }
+            }            
+
+        </script>
+    </body>
+</html>

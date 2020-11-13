@@ -1,0 +1,32 @@
+.clickSort {
+    margin:auto;
+    min-width: 400px;
+    width: 50%;
+}
+
+.clickSort table {
+    margin:auto;     /* auto makes left and right margins the same, means centered */
+    margin-top: 1em; /* em means size of capital M */
+    width: 100%;    
+}
+
+.clickSort td {
+    padding: 8px;
+    background-color: white;
+    font-size:14px;
+    white-space: nowrap; 
+}
+
+.clickSort th {  /* style of td elements that are inside of a thead element */
+    padding:8px;
+    padding-top:10px;
+    background-color: #AABBCC;
+    font-weight: bold;
+    font-size:16px;
+}
+
+.clickSort td img {
+    width: 50%;
+}
+
+

@@ -1,0 +1,34 @@
+
+.reactUserTable table {
+    margin:auto;     /* auto makes left and right margins the same, means centered */
+    margin-top: 1em; /* em means size of capital M */
+}
+
+.reactUserTable td {
+    padding: 4px;
+    background-color: #DDEEEE;
+    font-size:13px;
+}
+
+.reactUserTable th {  /* style of td elements that are inside of a thead element */
+    padding:4px;
+    padding-top:8px;
+    background-color: #AABBCC;
+    font-weight: bold;
+    font-size:16px;
+}
+
+.reactUserTable .textAlignRight {
+    text-align:right;
+}
+
+.reactUserTable .shadowImage img {
+    width: 120px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px #AAAAAA;
+}
+
+.reactUserTable table, th, td {
+    border: 1px solid darkblue;
+    border-collapse: collapse;
+}

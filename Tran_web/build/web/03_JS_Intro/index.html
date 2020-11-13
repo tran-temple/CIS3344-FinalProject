@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+Name: Hong Tran
+HW03 - JS Intro
+-->
+<html>
+    <head>
+        <title>Visit Museum</title>
+
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />         
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            div .museum {
+                padding: 1em;
+                margin: 1em;
+            }
+            #content button
+            {
+                width: 140px;
+            }
+            #content input
+            {
+                width: 250px;
+            }
+            #content p
+            {
+                color: blue;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Philadelphia Museum
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <p>** Swipe mouse through the divs to see their colors change **</p>
+            <p><i>Click on this box to decrease the ticket price by 2%</i></p>            
+            <div class="museum" id="museum_01"></div>
+            
+            <button onclick="changeName01()">Change Place Name</button>
+            <input id="newName_01"/>
+            <br/>
+            <button onclick="updatePrice01()">Change Ticket Price</button>
+            <input id="newPrice_01"/>
+            <br/>
+            <button onclick="changeLocation01()">Change Location</button>
+            <input id="newLocation_01"/>
+            <br/><br/>
+            
+            <p><i>Click on this box to increase the ticket price by 2%</i></p>            
+            <div class="museum" id="museum_02"></div>
+            
+            <button onclick="changeName02()">Change Place Name</button>
+            <input id="newName_02"/>
+            <br/>
+            <button onclick="updatePrice02()">Change Ticket Price</button>
+            <input id="newPrice_02"/>
+            <br/>
+            <button onclick="changeLocation02()">Change Location</button>
+            <input id="newLocation_02"/>            
+            <br/><br/>
+        </div> <!-- end of  content -->
+
+
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <!-- script for make change museum-->
+        <script src="js/MakeMuseum.js"></script>
+
+        <script>
+            "use strict";
+
+            var location_01 = "4231 Avenue of the Republic, Philadelphia, PA 19131";
+            var pics_01 = "pics/pleasetouchmuseum_180x120.jpg";
+            var museumObj_01 = MakeMuseum("museum_01", "Please Touch Museum", 19, location_01, pics_01, "white", "lightgrey");
+            museumObj_01.log();
+
+            var location_02 = "2600 Benjamin Franklin Parkway, Philadelphia, PA 19130";
+            var pics_02 = "pics/artmuseum_183x122.jpg";
+            var museumObj_02 = MakeMuseum("museum_02", "Art Museum", 25, location_02, pics_02, "white", "lightgrey");
+            museumObj_02.log();
+
+            museumObj_01.onclick = function () { 
+                console.log("will decrease the ticket price by 2%");
+                museumObj_01.changeTicketPrice(-0.02);
+            };
+
+            museumObj_02.onclick = function () { 
+                console.log("will increase the ticket price by 2%");
+                museumObj_02.changeTicketPrice(0.02);
+            };
+
+            function changeName01() {
+                //get value of user's input
+                var newName = document.getElementById("newName_01").value;
+                console.log("change name of Museum 1");
+                museumObj_01.setName(newName);
+            };
+
+            function changeName02() {
+                //get value of user's input
+                var newName = document.getElementById("newName_02").value;
+                console.log("change name of Museum 2");
+                museumObj_02.setName(newName);
+            };
+            
+            function updatePrice01() {
+                //get value of user's input
+                var newPrice = document.getElementById("newPrice_01").value;
+                console.log("change ticket price of Museum 1");
+                museumObj_01.setTicketPrice(newPrice);
+            };
+            
+            function updatePrice02() {
+                //get value of user's input
+                var newPrice = document.getElementById("newPrice_02").value;
+                console.log("change ticket price of Museum 2");
+                museumObj_02.setTicketPrice(newPrice);
+            };
+            
+            function changeLocation01() {
+                //get value of user's input
+                var newLocation = document.getElementById("newLocation_01").value;
+                console.log("change location of Museum 1");
+                museumObj_01.setLocation(newLocation);
+            };
+            
+            function changeLocation02() {
+                //get value of user's input
+                var newLocation = document.getElementById("newLocation_02").value;
+                console.log("change location of Museum 2");
+                museumObj_02.setLocation(newLocation);
+            };
+            
+            console.log("museumObj_01: public property name is "+ museumObj_01.name);
+            console.log("museumObj_01: private property ticket price is (should error out) "+ museumObj_01.ticketPrice);
+
+        </script>
+    </body>
+</html>

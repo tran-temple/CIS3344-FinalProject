@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+Name: Hong Tran
+HW04 - JS Adv
+-->
+<html>
+    <head>
+        <title>Visit Longwood Gardens</title>
+
+        <!-- Limk to the External Style Sheet of MakeSlideshow-->
+        <link href="myStyle.css" rel="stylesheet" type="text/css" />
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Longwood Gardens
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <p>
+                <b>Longwood Gardens</b> is an American botanical garden. 
+                It consists of over 1,077 acres (436 hectares) of gardens, woodlands, and meadows in Kennett Square, Pennsylvania, United States 
+                in the Brandywine Creek Valley. It is one of the premier horticultural display gardens in the United States 
+                and is open to visitors year-round to enjoy native and exotic plants and horticulture (both indoor and outdoor), 
+                events and performances, seasonal and themed attractions, as well as educational lectures, courses, and workshops.
+            </p>
+            <p>
+                <b>Address: </b><i>1001 Longwood Rd, Kennett Square, PA 19348</i>
+            </p>            
+            <p>
+                <b>* Explore Longwood Gardens at the official site: </b> 
+                <a href="https://longwoodgardens.org/" target="_blank">
+                    longwoodgardens.org
+                </a>                
+            </p>
+            
+            <p class="picContainer" id="slide1Id"></p>
+            
+            <p class="picContainer" id="slide2Id"></p>
+            
+            <p class="picContainer" id="slide3Id"></p>
+            
+            <p>
+                <i>* User instructions: 
+                    Each slideshow also goes auto advance to show different images.
+                </i>
+            </p>
+        </div>
+
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <script src="js/MakeSlideShow.js"></script>
+
+        <script>
+            "use strict";
+            // create first slideshow object
+            var firstPicList = [
+                {fileName: "spring01_600x400.jpg", caption: "Spring 1"},
+                {fileName: "spring02_600x400.jpg", caption: "Spring 2"},
+                {fileName: "spring03_600x400.jpg", caption: "Spring 3"},
+                {fileName: "spring04_600x400.jpg", caption: "Spring 4"},
+                {fileName: "spring05_600x400.jpg", caption: "Spring 5"}
+            ];
+
+            var ss1 = MakeSlideShow({
+                id: "slide1Id",
+                folder: "pics/",
+                picList: firstPicList,
+                border: "2px solid green",
+                class: "caption"
+            });
+
+            ss1.setPicNum(0);
+
+            // create second slideshow object
+            var secondPicList = [
+                {fileName: "fall01_600x400.jpg", caption: "Fall 1"},
+                {fileName: "fall02_600x400.jpg", caption: "Fall 2"},
+                {fileName: "fall03_600x400.jpg", caption: "Fall 3"},
+                {fileName: "fall04_600x400.jpg", caption: "Fall 4"},
+                {fileName: "fall05_600x400.jpg", caption: "Fall 5"}
+            ];
+
+            var ss2 = MakeSlideShow({
+                id: "slide2Id",
+                folder: "pics/",
+                picList: secondPicList,
+                border: "2px solid yellow",
+                class: "caption"
+            });
+
+            // create third slideshow object
+            var thirdPicList = [
+                {fileName: "chirstmas01_600x400.jpg", caption: "Chirstmas 1"},
+                {fileName: "chirstmas02_600x400.jpg", caption: "Chirstmas 2"},
+                {fileName: "chirstmas03_600x400.jpg", caption: "Chirstmas 3"},
+                {fileName: "chirstmas04_600x400.jpg", caption: "Chirstmas 4"},
+                {fileName: "chirstmas05_600x400.jpg", caption: "Chirstmas 5"}
+            ];
+
+            var ss3 = MakeSlideShow({
+                id: "slide3Id",
+                folder: "pics/",
+                picList: thirdPicList,
+                border: "",
+                class: "caption"
+            });
+
+            // this will make every slideshow auto advance every wanted seconds
+            ss1.go(1500);   //1.5 seconds
+            ss2.go(2000);   //2.0 seconds
+            ss3.go(3000);   //3.0 seconds
+            
+        </script>
+    </body>
+</html>

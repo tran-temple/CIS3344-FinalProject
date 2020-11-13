@@ -1,0 +1,27 @@
+body {
+    font-family: sans-serif;
+}
+
+table {
+    margin:auto;     /* auto makes left and right margins the same, means centered */
+    margin-top: 1em; /* em means size of capital M */
+}
+
+td {
+    padding: 4px;
+    background-color: #DDEEEE;
+    font-size:13px;
+}
+
+th {  /* style of td elements that are inside of a thead element */
+    padding:4px;
+    padding-top:8px;
+    background-color: #AABBCC;
+    font-weight: bold;
+    font-size:16px;
+}
+
+td img {
+    width: 120px;
+    border-radius: 10px;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Web Users</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/reactUserTable.css" rel="stylesheet" type="text/css" />
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js'></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js'></script>
+
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+
+    </head>
+    
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                The list of web users
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <h3 style="text-align:center">User List</h3>
+
+            <div id="listUser"></div>
+            <br/>
+        </div>        
+
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <script src="js/ajax_alt.js"></script>
+
+        <script type="text/babel" src="js/React/UserTable.js"></script>
+
+        <script type="text/babel">
+            "use strict";
+
+            function my$(element) {
+                return document.getElementById(element);
+            }
+
+
+            ajax_alt("webAPIs/listUsersAPI.jsp", success, "listUser");
+
+            function success(obj) {
+                console.log(obj);
+                if (obj.dbError.length > 0) {
+                    // the API call might have been successful, but maybe there was a DB error 
+                    // (like forgot to tunnel in, or SQL syntax error, etc).
+                    my$("listUser").innerHTML = "Error: " + obj.dbError;
+                } else {
+                    // combine, rename, and reorder the fields from obj.webUserList into a new list of objects,                     
+                    var myList = [];
+                    for (var i = 0; i < obj.webUserList.length; i++) {
+                        myList[i] = {}; // create empty object 
+                        myList[i].webUserId = obj.webUserList[i].webUserId;
+                        myList[i].userEmail = obj.webUserList[i].userEmail;
+                        myList[i].image = obj.webUserList[i].image;
+                        myList[i].birthday = obj.webUserList[i].birthday;
+                        myList[i].membershipFee = obj.webUserList[i].membershipFee;
+                        //myList[i].errorMsg = obj.webUserList[i].errorMsg; // leave this in until we are sure no errors
+                    }
+
+                    // turn the list into an HTML table 
+                    ReactDOM.render(
+                            <UserTable list={myList}/>,
+                            document.getElementById("listUser")
+                            );
+                }
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Name: Hong Tran
+HW05 - JS Fw
+-->
+<html>
+    <head>
+        <title>Bikes and Helmets</title>
+
+        <!-- Limk to the External Style Sheet of MakeTable-->
+        <link href="clickSort.css" rel="stylesheet" type="text/css" />
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Bikes and Helmets for Adults
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <p>
+                Riding a bicycle is one of the most amazing idea.
+                Wearing a bicycle helmet is always a good idea. 
+                Please select the couple of bicycle and helmet which fits your style to explore Center City!!!
+            </p>                       
+            <div class="clickSort" id="firstDiv"></div>
+            <div class="clickSort" id="secondDiv"></div>
+            <br/>
+        </div>
+
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <script src="MakeTable.js"></script>
+
+        <script>
+            "use strict";
+
+            var table1 = MakeTable({
+                id: "firstDiv",
+                jsonFile: "JSON/bikes.json",
+                typeList: ["s", "i", "s", "$"]
+            });
+
+            table1.setStyle("black");
+
+            var table2 = MakeTable({
+                id: "secondDiv",
+                jsonFile: "JSON/helmets.json",
+                typeList: ["s", "i", "$"]
+            });
+
+            table2.setStyle("blue");
+
+        </script>
+    </body>
+</html>

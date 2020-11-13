@@ -1,0 +1,54 @@
+/* This is my style to add more for common style*/
+
+.pictures {
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px black;
+}
+
+/* unvisited link */
+a:link {
+    color: red;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+.center {
+    text-align: center;
+}
+
+body { 
+    background-color: lightcyan; /* this is grey that shows through the content area */
+    color: black;  /* color of font */
+}
+
+#titleNav { 
+    background-color:#3E5485; /*one of color is picked from the picture*/
+    color: white;
+}
+
+#nav a {  
+    color: #C8C8C8; /* light gray: to provide color for links, you have to style the "a" tag */
+}
+
+#footer { 
+    background-color:#3E5485;
+    color: white; 
+}
+
+.dropContent {
+    background-color:#3E5485;
+}

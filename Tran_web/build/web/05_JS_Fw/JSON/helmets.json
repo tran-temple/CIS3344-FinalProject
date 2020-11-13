@@ -1,0 +1,22 @@
+[
+    {
+        "Style": "Blackish",
+        "Image": "helmetPics/blackish.jpg",
+        "Price": "52.49"
+    },
+    {
+        "Style": "Black Zone",
+        "Image": "helmetPics/blackzone.jpg",
+        "Price": "39.99"
+    },
+    {
+        "Style": "Fly Boy",
+        "Image": "helmetPics/flyboy.jpg",
+        "Price": "49.99"
+    },
+    {
+        "Style": "Visitor Street",
+        "Image": "helmetPics/visitorstreet.jpg",
+        "Price": "49.99"
+    }
+]

@@ -1,0 +1,32 @@
+body {
+    background-color: lightcyan;
+    margin: 0.5em;
+    min-height: 700px;
+}
+
+.picContainer{
+    float: left;
+    text-align: center;
+    font-weight: bold; 
+    box-sizing: border-box; 
+    width: 33.3%;
+}
+
+.picContainer img {
+    width: 85%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px black;
+}
+
+.picContainer button {
+    width: 50px;
+    text-align: center;
+    margin: 8px 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.caption {
+    color: blue;
+    font-weight: bold;
+}

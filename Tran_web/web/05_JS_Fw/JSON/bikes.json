@@ -1,0 +1,26 @@
+[
+    {
+        "Make": "Blix",
+        "Image": "bikePics/blix.jpg",
+        "Color": "Sky Blue",
+        "Price": "1499"
+    },
+    {
+        "Make": "Zizzo",
+        "Image": "bikePics/zizzo.jpg",
+        "Color": "White",
+        "Price": "279"
+    },
+    {
+        "Make": "Schwinn",
+        "Image": "bikePics/schwinn.jpg",
+        "Color": "White",
+        "Price": "329"
+    },
+    {
+        "Make": "Mongoose",
+        "Image": "bikePics/mongoose.jpg",
+        "Color": "Black",
+        "Price": "269"
+    }    
+]
