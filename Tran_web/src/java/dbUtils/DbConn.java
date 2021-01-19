@@ -14,7 +14,7 @@ public class DbConn {
 
     public DbConn() {
         
-        String dbAndPass = "SP20_3344_tuk85873?user=tuk85873&password=thiekain";
+        String dbAndPass = "xxxxxxxx";
 
         try {
             String DRIVER = "com.mysql.jdbc.Driver";
